@@ -10,6 +10,7 @@ const music = document.getElementById("music");
 let myVar = null;
 
 nav_section.addEventListener("click", (e) => {
+  user_img.selectedIndex = 0;
   const b = e.target.innerHTML;
   clearInterval(myVar);
   fetch(
@@ -45,8 +46,18 @@ nav_section.addEventListener("click", (e) => {
       collection.innerHTML = `showind ${b} collection`;
 
       user_img.addEventListener("change", (e) => {
+        const runImgUntil = e.target.value == "" ? res.length : e.target.value;
         clearInterval(myVar);
-        section.innerHTML = res[e.target.value];
+        ind = 0;
+        
+        function myTimer() {
+          section.innerHTML = res[ind];
+          ind++;
+          if (ind == runImgUntil) {
+            ind = 0;
+          }
+        }
+        myVar = setInterval(myTimer, 3000);
       });
     });
 });
