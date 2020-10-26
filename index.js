@@ -1,6 +1,7 @@
 const section = document.querySelector(".section-images");
 const collection = document.querySelector(".collection");
 const user_img = document.getElementById("user-img");
+const nav_section = document.querySelector(".nav-section");
 
 const sport = document.getElementById("sport");
 const food = document.getElementById("food");
@@ -8,10 +9,11 @@ const music = document.getElementById("music");
 
 let myVar = null;
 
-sport.addEventListener("click", () => {
+nav_section.addEventListener("click", (e) => {
+  const b = e.target.innerHTML;
   clearInterval(myVar);
   fetch(
-    "https://pixabay.com/api/?key=14910698-da2d9192ee156a4fb851cc1c6&q=sport&image_type=photo",
+    `https://pixabay.com/api/?key=14910698-da2d9192ee156a4fb851cc1c6&q=${b}&image_type=photo`,
     {
       method: "GET",
     }
@@ -40,7 +42,7 @@ sport.addEventListener("click", () => {
         }
       }
       myVar = setInterval(myTimer, 3000);
-      collection.innerHTML = "showind sport collection";
+      collection.innerHTML = `showind ${b} collection`;
 
       user_img.addEventListener("change", (e) => {
         clearInterval(myVar);
