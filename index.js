@@ -3,6 +3,9 @@ const collection = document.querySelector(".collection");
 const user_img = document.getElementById("user-img");
 const nav_section = document.querySelector(".nav-section");
 
+const click_left = document.querySelector(".arrow-left");
+const click_right = document.querySelector(".arrow-right");
+
 const sport = document.getElementById("sport");
 const food = document.getElementById("food");
 const music = document.getElementById("music");
@@ -49,7 +52,7 @@ nav_section.addEventListener("click", (e) => {
         const runImgUntil = e.target.value == "" ? res.length : e.target.value;
         clearInterval(myVar);
         ind = 0;
-        
+
         function myTimer() {
           section.innerHTML = res[ind];
           ind++;
@@ -58,6 +61,15 @@ nav_section.addEventListener("click", (e) => {
           }
         }
         myVar = setInterval(myTimer, 3000);
+      });
+
+      click_left.addEventListener("click", () => {
+        section.innerHTML = res[--ind === -1 ? ind = 0 : ind = ind];
+        clearInterval(myVar);
+      });
+      click_right.addEventListener("click", () => {
+        section.innerHTML = res[++ind === res.length ? ind = 0 : ind = ind];
+        clearInterval(myVar);
       });
     });
 });
