@@ -14,10 +14,10 @@ let myVar = null;
 
 nav_section.addEventListener("click", (e) => {
   user_img.selectedIndex = 0;
-  const domain = e.target.innerHTML;
+  const d = e.target.innerHTML;
   clearInterval(myVar);
   fetch(
-    `https://pixabay.com/api/?key=14910698-da2d9192ee156a4fb851cc1c6&q=${domain}`,
+    `https://pixabay.com/api/?key=14910698-da2d9192ee156a4fb851cc1c6&q=${d}`,
     {
       method: "GET",
     }
