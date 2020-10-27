@@ -14,10 +14,10 @@ let myVar = null;
 
 nav_section.addEventListener("click", (e) => {
   user_img.selectedIndex = 0;
-  const b = e.target.innerHTML;
+  const domain = e.target.innerHTML;
   clearInterval(myVar);
   fetch(
-    `https://pixabay.com/api/?key=14910698-da2d9192ee156a4fb851cc1c6&q=${b}&image_type=photo`,
+    `https://pixabay.com/api/?key=14910698-da2d9192ee156a4fb851cc1c6&q=${domain}`,
     {
       method: "GET",
     }
@@ -46,7 +46,7 @@ nav_section.addEventListener("click", (e) => {
         }
       }
       myVar = setInterval(myTimer, 3000);
-      collection.innerHTML = `showind ${b} collection`;
+      collection.innerHTML = `showind ${domain} collection`;
 
       user_img.addEventListener("change", (e) => {
         const runImgUntil = e.target.value == "" ? res.length : e.target.value;
