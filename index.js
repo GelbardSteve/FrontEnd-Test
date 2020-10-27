@@ -28,17 +28,16 @@ nav_section.addEventListener("click", (e) => {
       res.hits.forEach((img) => {
         const { largeImageURL } = img;
 
-        print.push(`
-            <img src="${largeImageURL}" class="img-section">
-            `);
+        print.push(`<img src="${largeImageURL}" class="img-section">`);
       });
+
       return print;
     })
     .then((res) => {
       section.innerHTML = res[0];
       let ind = 1;
 
-      function myTimer() {
+      function myTimer(section, res, ind) {
         section.innerHTML = res[ind];
         ind++;
         if (ind == res.length) {
@@ -64,11 +63,12 @@ nav_section.addEventListener("click", (e) => {
       });
 
       click_left.addEventListener("click", () => {
-        section.innerHTML = res[--ind === -1 ? ind = res.length - 1 : ind = ind];
+        section.innerHTML =
+          res[--ind === -1 ? (ind = res.length - 1) : (ind = ind)];
         clearInterval(myVar);
       });
       click_right.addEventListener("click", () => {
-        section.innerHTML = res[++ind === res.length ? ind = 0 : ind = ind];
+        section.innerHTML = res[++ind === res.length ? (ind = 0) : (ind = ind)];
         clearInterval(myVar);
       });
     });
