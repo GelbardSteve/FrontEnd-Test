@@ -64,7 +64,7 @@ nav_section.addEventListener("click", (e) => {
       });
 
       click_left.addEventListener("click", () => {
-        section.innerHTML = res[--ind === -1 ? ind = 0 : ind = ind];
+        section.innerHTML = res[--ind === -1 ? ind = res.length - 1 : ind = ind];
         clearInterval(myVar);
       });
       click_right.addEventListener("click", () => {
