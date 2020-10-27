@@ -37,7 +37,7 @@ nav_section.addEventListener("click", (e) => {
       section.innerHTML = res[0];
       let ind = 1;
 
-      function myTimer(section, res, ind) {
+      function myTimer() {
         section.innerHTML = res[ind];
         ind++;
         if (ind == res.length) {
