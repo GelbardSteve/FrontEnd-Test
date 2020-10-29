@@ -35,41 +35,36 @@ nav_section.addEventListener("click", (e) => {
     })
     .then((res) => {
       section.innerHTML = res[0];
-      let ind = 1;
+      let ind = { num: 1 };
 
-      function myTimer() {
-        section.innerHTML = res[ind];
-        ind++;
-        if (ind == res.length) {
-          ind = 0;
-        }
-      }
-      myVar = setInterval(myTimer, 3000);
+      myVar = setInterval(() => {myTimer(ind, 0)}, 3000);
       collection.innerHTML = `showind ${domain} collection`;
 
       user_img.addEventListener("change", (e) => {
         const runImgUntil = e.target.value == "" ? res.length : e.target.value;
         clearInterval(myVar);
-        ind = 0;
+        ind.num = 0;
 
-        function myTimer() {
-          section.innerHTML = res[ind];
-          ind++;
-          if (ind == runImgUntil) {
-            ind = 0;
-          }
-        }
-        myVar = setInterval(myTimer, 3000);
+        myVar = setInterval(() => {myTimer(ind, runImgUntil)}, 3000);
       });
 
       click_left.addEventListener("click", () => {
         section.innerHTML =
-          res[--ind === -1 ? (ind = res.length - 1) : (ind = ind)];
+          res[--ind.num === -1 ? (ind.num = res.length - 1) : (ind.num = ind.num)];
         clearInterval(myVar);
       });
       click_right.addEventListener("click", () => {
-        section.innerHTML = res[++ind === res.length ? (ind = 0) : (ind = ind)];
+        section.innerHTML = res[++ind.num === res.length ? (ind.num = 0) : (ind.num = ind.num)];
         clearInterval(myVar);
       });
+
+
+      function myTimer(time , ind) {
+        section.innerHTML = res[time.num];
+        time.num++;
+        if (time.num == ind) {
+          time.num = 0;
+        }
+      }
     });
 });
