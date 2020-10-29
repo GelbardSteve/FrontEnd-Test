@@ -38,7 +38,7 @@ nav_section.addEventListener("click", (e) => {
       let ind = { num: 1 };
 
       myVar = setInterval(() => {myTimer(ind, 0)}, 3000);
-      collection.innerHTML = `showind ${domain} collection`;
+      collection.innerHTML = `showing ${domain} collection`;
 
       user_img.addEventListener("change", (e) => {
         const runImgUntil = e.target.value == "" ? res.length : e.target.value;
